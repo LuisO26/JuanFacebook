@@ -23,11 +23,11 @@
  */
 
 // Configurations
-$access_token = null;
+$access_token = 'EAACs7PdT7q0BAJ8oW48pZCcxsNZBHB7sSEyehMRcxygO1CUWrhfTR29ZBTZB0sPySapB5QLrFfZCztlyNd0kO2N20Bx1MQwYDc6xu5ZAURI2YoUwZAze3iRCiJwlcDGgt9GESK1hD2zE9UdPZCgdYm5xn94SJxWOlOA7nYYkLg5sejrNDnjni7uUeJtwB1YsimPLrrbXQ473mwZDZD';
 $app_id = '190133761732269';
 $app_secret = '4369d915cc469d1f94c81357abf5c91a';
 // should begin with "act_" (eg: $account_id = 'act_1234567890';)
-$account_id = null;
+$account_id = '713079158';
 // Configurations - End
 
 if (is_null($access_token) || is_null($app_id) || is_null($app_secret)) {
@@ -41,18 +41,19 @@ if (is_null($account_id)) {
     'You must set your account id before executing');
 }
 
-define('SDK_DIR', __DIR__ . '/..'); // Path to the SDK directory
+define('SDK_DIR', __DIR__ . '/src/FacebookAds'); // Path to the SDK directory
 $loader = include SDK_DIR.'/vendor/autoload.php';
+var_dump(SDK_DIR);
 
 use FacebookAds\Api;
 
 Api::init($app_id, $app_secret, $access_token);
 
 // use the namespace for Custom Audiences and Fields
-use facebook\FacebookAds\Object\CustomAudience;
-use facebook\FacebookAds\Object\Fields\CustomAudienceFields;
-use facebook\FacebookAds\Object\Values\CustomAudienceTypes;
-use facebook\FacebookAds\Object\Values\CustomAudienceSubtypes;
+use FacebookAds\Object\CustomAudience;
+use FacebookAds\Object\Fields\CustomAudienceFields;
+use FacebookAds\Object\Values\CustomAudienceTypes;
+use FacebookAds\Object\Values\CustomAudienceSubtypes;
 
 // Create a custom audience object, setting the parent to be the account id
 $audience = new CustomAudience(null, $account_id);
